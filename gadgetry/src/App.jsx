@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import Products from './Components/Products'
@@ -14,12 +14,13 @@ function App() {
     <>
           <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Login/>} />
+            <Route path='/' element={<Products/>} />
             <Route path='/SignUp' element={<SignUp/>} />
             <Route path='/Products' element={<Products/>} />
             <Route path='/Products/ProductDetail/:id' element={<ProductDetail/>}/>
             <Route path='/cart' element={<Cart/>} />
             <Route path='/Checkout' element={<Checkout/>} />
+            <Route path='/login' element={<Login/>}></Route>
           </Routes>
           </BrowserRouter>
     </>
