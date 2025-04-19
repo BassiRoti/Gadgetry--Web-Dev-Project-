@@ -7,6 +7,7 @@ import Products from './Components/Products'
 import ProductDetail from './Components/ProductDetail'
 import Cart from './Components/Cart'
 import Checkout from './Components/Checkout'
+import AllProducts from './Components/AllProducts'
 function App() {
   
 
@@ -21,6 +22,7 @@ function App() {
             <Route path='/cart' element={<Cart/>} />
             <Route path='/Checkout' element={<Checkout/>} />
             <Route path='/login' element={<Login/>}></Route>
+            <Route path='/AllProducts' element={<AllProducts/>}></Route>
           </Routes>
           </BrowserRouter>
     </>

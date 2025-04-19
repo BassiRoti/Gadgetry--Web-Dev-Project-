@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, replace, Router } from 'react-router-dom';
+import AllProducts from '../Components/AllProducts'
 
 const Hero = () => {
   return (
@@ -15,8 +16,8 @@ const Hero = () => {
       <div className="relative text-center z-10 space-y-6 px-6">
         <h1 className="text-4xl md:text-6xl font-bold">Discover the Future of Tech</h1>
         <p className="text-lg md:text-2xl">Shop the latest gadgets, laptops, and accessories at unbeatable prices!</p>
-        <Link to="/Products">
-          <button className="mt-4 px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition">
+        <Link to="/AllProducts">
+          <button  className="mt-4 px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-200 transition cursor-pointer">
             Shop Now
           </button>
         </Link>
