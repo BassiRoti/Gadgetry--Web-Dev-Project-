@@ -1,11 +1,14 @@
 import React from 'react'
-import Sidebar from './Sidebar'
+import Navbar from './Navbar'
+import InnerCart from './InnerCart'
+import Footer from './Footer'
 
 export default function Cart() {
   return (
-    <div>
-      cart
-      <Sidebar/>
-    </div>
+    <>
+    <Navbar/>
+    <InnerCart/>
+    <Footer/>
+    </>
   )
 }

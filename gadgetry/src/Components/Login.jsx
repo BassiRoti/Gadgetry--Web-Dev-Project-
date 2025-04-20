@@ -1,9 +1,86 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Login() {
+const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    // Trigger fade-in when component mounts
+    setShowForm(true);
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    if (email && password) {
+      alert('Login successful!');
+      navigate('/Products');
+    } else {
+      alert('Please fill all fields!');
+    }
+  };
+
   return (
-    <div>
-      login
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      
+      <div className={`bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md transform transition-all duration-700 ${
+          showForm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+
+        <h2 className="text-4xl font-extrabold text-center text-blue-600 mb-8 tracking-wide animate-pulse">
+          Welcome Back!
+        </h2>
+
+        <form onSubmit={handleLogin} className="space-y-8">
+          {/* Email Field */}
+          <div className="relative group">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all"
+              placeholder="Email Address"
+            />
+          </div>
+
+          {/* Password Field */}
+          <div className="relative group">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all"
+              placeholder="Password"
+            />
+          </div>
+
+          {/* Sign In Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold tracking-wide transition-all transform hover:scale-105"
+          >
+            Sign In
+          </button>
+        </form>
+
+        {/* Link to Sign Up */}
+        <div className="text-center mt-8">
+          <p className="text-gray-600">
+            Not a user?{' '}
+            <Link to="/SignUp" className="text-blue-600 font-semibold hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
+      </div>
+      
     </div>
-  )
-}
+  );
+};
+
+export default Login;

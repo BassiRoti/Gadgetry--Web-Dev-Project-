@@ -21,7 +21,7 @@ const Navbar = () => {
 
         {/* Icons */}
         <div className="flex items-center gap-6">
-          <Link to="/Cart" className="relative">
+          <Link to="/cart" className="relative">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-gray-700 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13m-13-6H3m6 6a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
             </svg>
