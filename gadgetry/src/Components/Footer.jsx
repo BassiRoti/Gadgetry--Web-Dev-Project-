@@ -39,9 +39,7 @@ const Footer = () => {
           <h4 className="text-lg font-bold mb-4 text-white">Follow Us</h4>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-white">🌐</a>
-            <a href="#" className="hover:text-white">📘</a>
             <a href="#" className="hover:text-white">📸</a>
-            <a href="#" className="hover:text-white">🐦</a>
           </div>
         </div>
 
@@ -49,8 +47,8 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="text-center text-gray-500 text-sm mt-10">
-        © {new Date().getFullYear()} Gadgetry. All rights reserved.
-      </div>
+        © 2025 Gadgetry. All rights reserved.
+      </div>  
     </footer>
   );
 };
