@@ -1,15 +1,17 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { addToCart } from '../Redux/CartSlice';
-import products from '../Data/Products';
+// import products from '../Data/Products';
+import { useSelector,useDispatch } from 'react-redux';
 
 const ProductDetail = () => {
+  const products  = useSelector((state) => state.product.products);
   const { id } = useParams(); 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch=useDispatch();
+  
 
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = products.find((p) => p._id === id);
 
   const handleclick=()=>{
     dispatch(addToCart(product))

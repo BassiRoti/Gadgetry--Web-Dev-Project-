@@ -2,7 +2,7 @@ const { usersignup,userlogin } =require("../operations/UserOperations");
 
 exports.signup=async(req,res)=>{
     try {
-        const s1=await usersignup(req.body.name,req.body.pass,req.body.role);
+        const s1=await usersignup(req.body.name,req.body.email,req.body.password,req.body.role);
         res.status(200).json(s1)
     } catch (error) {
         res.status(400).json({msg:error.message})
