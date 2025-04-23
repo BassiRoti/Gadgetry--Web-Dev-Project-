@@ -7,23 +7,31 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [signupcheck,setsignupcheck]=useState(false);
 
   useEffect(() => {
     setShowForm(true);
   }, []);
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async(e) => {
     e.preventDefault();
-    
-    if (name && email && password) {
-      alert('Sign Up successful! 🎉');
-      navigate('/');
-    } else {
-      alert('Please fill all fields!');
+    const res=await fetch('http://localhost:3000/auth/SignUp',{
+      method:'POST',
+      headers:{
+        "Content-Type": "application/json", 
+      },
+      body:JSON.stringify({name,email,password,role:'user'})
+    })
+    if(!res){
+      setsignupcheck(true);
     }
+    alert('successfully signed up');
+    navigate('/login');
   };
 
   return (
+    <>
+   {signupcheck?<p>error signing in</p>:(
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-300">
       
       <div className={`bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md transform transition-all duration-700 ${
@@ -92,6 +100,9 @@ const SignUp = () => {
       </div>
 
     </div>
+    )}
+    </>
+    
   );
 };
 

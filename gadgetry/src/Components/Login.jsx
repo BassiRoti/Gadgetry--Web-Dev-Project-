@@ -4,26 +4,36 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [pass, setPassword] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [logincheck,setlogincheck]=useState(false);
 
   useEffect(() => {
     // Trigger fade-in when component mounts
     setShowForm(true);
   }, []);
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
     
-    if (email && password) {
-      alert('Login successful!');
-      navigate('/Products');
-    } else {
-      alert('Please fill all fields!');
+    const res=await fetch('http://localhost:3000/auth/login',{
+      method:'POST',
+      headers:{
+        "Content-Type": "application/json", 
+      },
+      body:JSON.stringify({email:email,password:pass})
+    })
+    if (!res.ok) {
+      setlogincheck(true);
+      return;
     }
-  };
+
+    navigate('/');
+  }
 
   return (
+    <>
+    {logincheck? <p>error loggin in </p>:(
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
       
       <div className={`bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md transform transition-all duration-700 ${
@@ -51,7 +61,7 @@ const Login = () => {
           <div className="relative group">
             <input
               type="password"
-              value={password}
+              value={pass}
               onChange={(e) => setPassword(e.target.value)}
               required
               className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-400 transition-all"
@@ -80,6 +90,8 @@ const Login = () => {
       </div>
       
     </div>
+)}
+    </>
   );
 };
 

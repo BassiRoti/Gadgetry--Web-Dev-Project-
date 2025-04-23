@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import products from '../Data/Products'; // 👈 Import your products array
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+  const products=useSelector((state)=>state.product.products)
 
   // Filtered search results
   const filteredProducts = products.filter((product) =>
