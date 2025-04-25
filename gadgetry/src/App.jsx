@@ -10,6 +10,10 @@ import Checkout from './Components/Checkout'
 import AllProducts from './Components/AllProducts'
 import CategoryProducts from './Components/CategoryProducts'
 // import Categories from './Components/Categories'
+import { loadStripe } from '@stripe/stripe-js';
+  import { Elements } from '@stripe/react-stripe-js';
+  // import CheckoutForm from './CheckoutForm';
+  const stripePromise = loadStripe('123');
 function App() {
   
 
@@ -22,10 +26,13 @@ function App() {
             <Route path='/Products' element={<Products/>} />
             <Route path='/Products/ProductDetail/:id' element={<ProductDetail/>}/>
             <Route path='/cart' element={<Cart/>} />
-            <Route path='/Checkout' element={<Checkout/>} />
+            {/* <Route path='/Checkout' element={<Checkout/>} /> */}
             <Route path='/login' element={<Login/>}></Route>
             <Route path='/AllProducts' element={<AllProducts/>}></Route>
             <Route path='/Categories/:id' element={<CategoryProducts/>} />
+            <Route path='/Checkout' element={<Elements stripe={stripePromise}><Checkout /></Elements>}
+        />
+
 
           </Routes>
           </BrowserRouter>
