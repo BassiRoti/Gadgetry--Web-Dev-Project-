@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setlogin } from '../Redux/LoginSlice';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -7,6 +9,8 @@ const Login = () => {
   const [pass, setPassword] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [logincheck,setlogincheck]=useState(false);
+  const dispatch=useDispatch();
+
 
   useEffect(() => {
     // Trigger fade-in when component mounts
@@ -27,8 +31,11 @@ const Login = () => {
       setlogincheck(true);
       return;
     }
+  const userData = await res.json(); 
+  console.log(userData);
 
-    navigate('/');
+  dispatch(setlogin(userData)); 
+  navigate('/');
   }
 
   return (

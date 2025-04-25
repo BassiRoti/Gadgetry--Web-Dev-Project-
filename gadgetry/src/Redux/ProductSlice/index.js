@@ -14,10 +14,14 @@ const productSlice = createSlice({
       addProduct:(state, action)=>{
         state.products.push(action.payload); 
       },
+      removestock:(state,action)=>{
+        const {quantity}=action.payload;
+        state.products.stock-=quantity;
+      }
     },
   });
 
 
-export const { setProducts, addProduct } = productSlice.actions;
+export const { setProducts, addProduct,removestock } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -24,6 +24,7 @@ export default function InnerAllProducts() {
                 className="rounded-lg w-full h-48 object-cover mb-4"
               />
               <h3 className="text-lg font-bold text-gray-800 mb-1">{product.title}</h3>
+              <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.stock}</h3>
               {/* <div className="flex items-center mb-2">
                 {Array(product.rating).fill().map((_, i) => (
                   <span key={i}>⭐</span>

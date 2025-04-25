@@ -8,6 +8,8 @@ import ProductDetail from './Components/ProductDetail'
 import Cart from './Components/Cart'
 import Checkout from './Components/Checkout'
 import AllProducts from './Components/AllProducts'
+import CategoryProducts from './Components/CategoryProducts'
+// import Categories from './Components/Categories'
 function App() {
   
 
@@ -23,6 +25,8 @@ function App() {
             <Route path='/Checkout' element={<Checkout/>} />
             <Route path='/login' element={<Login/>}></Route>
             <Route path='/AllProducts' element={<AllProducts/>}></Route>
+            <Route path='/Categories/:id' element={<CategoryProducts/>} />
+
           </Routes>
           </BrowserRouter>
     </>
