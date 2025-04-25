@@ -69,39 +69,50 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Icons/User */}
-        <div className="flex items-center gap-6 relative">
-          <Link to="/cart" className="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-gray-700 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13m-13-6H3m6 6a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
-            </svg>
-          </Link>
+{/* Icons/User */}
+<div className="flex items-center gap-6 relative">
+  <Link to="/cart" className="relative">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-gray-700 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13m-13-6H3m6 6a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" />
+    </svg>
+  </Link>
 
-          {loginstate ? (
-            <div className="relative">
-              <button
-                onClick={() => setShowMenu(!showMenu)}
-                className="text-gray-800 font-semibold hover:text-blue-600"
-              >
-                Hi, {username}
-              </button>
-              {showMenu && (
-                <div className="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-md py-2 z-50">
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link to="/Login" className="text-gray-700 hover:text-blue-600 font-semibold">
-              Login
-            </Link>
-          )}
+  {/* ✅ Admin Panel button */}
+  {loginstate?.role === 'admin' && (
+    <Link
+      to="/Admin"
+      className="text-gray-700 hover:text-blue-600 font-semibold"
+    >
+      Admin Panel
+    </Link>
+  )}
+
+  {loginstate ? (
+    <div className="relative">
+      <button
+        onClick={() => setShowMenu(!showMenu)}
+        className="text-gray-800 font-semibold hover:text-blue-600"
+      >
+        Hi, {username}
+      </button>
+      {showMenu && (
+        <div className="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-md py-2 z-50">
+          <button
+            onClick={handleLogout}
+            className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+          >
+            Logout
+          </button>
         </div>
+      )}
+    </div>
+  ) : (
+    <Link to="/Login" className="text-gray-700 hover:text-blue-600 font-semibold">
+      Login
+    </Link>
+  )}
+</div>
+
       </div>
     </nav>
   );

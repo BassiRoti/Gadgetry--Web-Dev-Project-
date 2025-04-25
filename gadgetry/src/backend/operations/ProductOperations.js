@@ -4,6 +4,6 @@ exports.getallproducts=async()=>{
     return await ProductSchema.find();
 }
 
-exports.createproduct=async(title,price,desc,img,category,isFeatured)=>{
-    return await ProductSchema.create({title,price,desc,img,category,isFeatured});
+exports.createproduct=async(title,price,description,image,category,isFeatured,quantity)=>{
+    return await ProductSchema.create({title,price,description,image,category,isFeatured,quantity});
 }

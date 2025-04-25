@@ -10,11 +10,13 @@ exports.getproduct=async(req,res)=>{
     }
 }
 
-exports.addproduct=async(req,res)=>{
+exports.addproduct = async (req, res) => {
     try {
-        const p2=await createproduct(req.body.title,req.body.price,req.body.desc,req.body.img,req.body.category,req.body.isFeatured)
-        res.status(200).json(p2);
+      const { title, price, description, image, category, isFeatured, quantity } = req.body;
+      const newProduct = await createproduct(title, price, description, image, category, isFeatured, quantity);
+      res.status(200).json(newProduct);
     } catch (error) {
-        res.status(400).json({msg:error.message})
+      res.status(400).json({ msg: error.message });
     }
-}
+  };
+  

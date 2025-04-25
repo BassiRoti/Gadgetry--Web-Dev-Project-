@@ -8,6 +8,7 @@ import ProductDetail from './Components/ProductDetail'
 import Cart from './Components/Cart'
 import Checkout from './Components/Checkout'
 import AllProducts from './Components/AllProducts'
+import Admin from './Components/Admin'
 import CategoryProducts from './Components/CategoryProducts'
 // import Categories from './Components/Categories'
 import { loadStripe } from '@stripe/stripe-js';
@@ -28,6 +29,7 @@ function App() {
             <Route path='/cart' element={<Cart/>} />
             {/* <Route path='/Checkout' element={<Checkout/>} /> */}
             <Route path='/login' element={<Login/>}></Route>
+            <Route path='/Admin' element={<Admin/>}></Route>
             <Route path='/AllProducts' element={<AllProducts/>}></Route>
             <Route path='/Categories/:id' element={<CategoryProducts/>} />
             <Route path='/Checkout' element={<Elements stripe={stripePromise}><Checkout /></Elements>}
