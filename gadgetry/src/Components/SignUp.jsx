@@ -43,7 +43,6 @@ const SignUp = () => {
         </h2>
 
         <form onSubmit={handleSignUp} className="space-y-8">
-          {/* Name Field */}
           <div className="relative group">
             <input
               type="text"
@@ -55,7 +54,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Email Field */}
           <div className="relative group">
             <input
               type="email"
@@ -67,7 +65,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Password Field */}
           <div className="relative group">
             <input
               type="password"
@@ -79,7 +76,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Sign Up Button */}
           <button
             type="submit"
             className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-bold tracking-wide transition-all transform hover:scale-105"
@@ -88,7 +84,6 @@ const SignUp = () => {
           </button>
         </form>
 
-        {/* Link to Login */}
         <div className="text-center mt-8">
           <p className="text-gray-600">
             Already have an account?{' '}

@@ -25,11 +25,6 @@ export default function InnerAllProducts() {
               />
               <h3 className="text-lg font-bold text-gray-800 mb-1">{product.title}</h3>
               <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.stock}</h3>
-              {/* <div className="flex items-center mb-2">
-                {Array(product.rating).fill().map((_, i) => (
-                  <span key={i}>⭐</span>
-                ))}
-              </div> */}
               <p className="text-green-600 text-xl font-semibold">${product.price}</p>
               <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
                 View Details

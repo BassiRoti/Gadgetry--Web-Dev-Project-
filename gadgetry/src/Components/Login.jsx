@@ -52,7 +52,6 @@ const Login = () => {
         </h2>
 
         <form onSubmit={handleLogin} className="space-y-8">
-          {/* Email Field */}
           <div className="relative group">
             <input
               type="email"
@@ -64,7 +63,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password Field */}
           <div className="relative group">
             <input
               type="password"
@@ -76,7 +74,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Sign In Button */}
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold tracking-wide transition-all transform hover:scale-105"
@@ -85,7 +82,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Link to Sign Up */}
         <div className="text-center mt-8">
           <p className="text-gray-600">
             Not a user?{' '}

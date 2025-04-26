@@ -11,7 +11,7 @@ const ProductDetail = () => {
   const products = useSelector((state) => state.product.products);
   const logincheck = useSelector((state) => state.login.login);
 
-  const [quantity, setQuantity] = useState(1); // 🔥 new state
+  const [quantity, setQuantity] = useState(1); 
 
   const product = products.find((p) => p._id === id);
 
@@ -45,7 +45,6 @@ const ProductDetail = () => {
           <p className="text-gray-600">{product.description}</p>
           <div className="text-green-600 text-2xl font-bold">${product.price}</div>
 
-          {/* Quantity Selector */}
           <div className="mt-4">
             <label className="block mb-2 text-gray-600 font-medium">Quantity</label>
             <input
@@ -58,7 +57,6 @@ const ProductDetail = () => {
             />
           </div>
 
-          {/* Add to Cart Button */}
           <button
             onClick={handleclick}
             className="mt-6 w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition"

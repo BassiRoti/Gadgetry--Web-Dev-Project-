@@ -7,7 +7,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  // Group items by _id and count quantity
   const groupedItems = cartItems.reduce((acc, item) => {
     const found = acc.find((i) => i._id === item._id);
     if (found) {
@@ -17,8 +16,7 @@ const Cart = () => {
     }
     return acc;
   }, []);
-
-  // Total Price
+  
   const totalPrice = groupedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
@@ -34,7 +32,6 @@ const Cart = () => {
         </div>
       ) : (
         <>
-          {/* Products */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {groupedItems.map((item) => (
               <div key={item._id} className="flex items-center bg-white rounded-lg shadow p-4 space-x-4">
@@ -54,7 +51,6 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* Total Price */}
           <div className="mt-12 text-right">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
               Total: ${totalPrice.toFixed(2)}

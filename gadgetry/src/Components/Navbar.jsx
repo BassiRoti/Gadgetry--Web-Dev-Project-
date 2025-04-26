@@ -23,7 +23,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    // localStorage.removeItem('user');
     setShowMenu(false);
     navigate('/');
   };
@@ -33,12 +32,11 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-blue-600">
           Gadgetry
         </Link>
 
-        {/* Search */}
+
         <div className="hidden md:flex flex-col relative">
           <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
             <input
@@ -69,7 +67,7 @@ const Navbar = () => {
           )}
         </div>
 
-{/* Icons/User */}
+
 <div className="flex items-center gap-6 relative">
   <Link to="/cart" className="relative">
     <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-gray-700 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,7 +75,6 @@ const Navbar = () => {
     </svg>
   </Link>
 
-  {/* ✅ Admin Panel button */}
   {loginstate?.role === 'admin' && (
     <Link
       to="/Admin"
