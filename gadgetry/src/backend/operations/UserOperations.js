@@ -8,7 +8,6 @@ exports.usersignup=async(name,email,password,role)=>{
     console.log("Created User:", u);
 
     return u
-
 }
 
 exports.userlogin=async(email,password)=>{
@@ -21,4 +20,3 @@ exports.userlogin=async(email,password)=>{
 
   return user;
 }
-

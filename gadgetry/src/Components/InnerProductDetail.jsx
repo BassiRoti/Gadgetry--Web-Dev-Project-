@@ -2,24 +2,32 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { addToCart } from '../Redux/CartSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { reduceStock } from '../Redux/ProductSlice';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.product.products);
   const logincheck = useSelector((state) => state.login.login);
 
-  const [quantity, setQuantity] = useState(1); 
+  // Fetch the product dynamically from Redux state
+  const product = useSelector((state) =>
+    state.product.products.find((p) => p._id === id)
+  );
 
-  const product = products.find((p) => p._id === id);
+  const [quantity, setQuantity] = useState(1);
 
   const handleclick = () => {
     if (logincheck) {
       for (let i = 0; i < quantity; i++) {
         dispatch(addToCart(product));
       }
+
+      // Dispatch action to reduce stock in Redux
+      dispatch(reduceStock({ productId: product._id, quantity }));
+
+      console.log(`Dispatched reduceStock for product ${product._id} with quantity ${quantity}`);
       alert(`${quantity} item(s) added to cart`);
     } else {
       alert("Login first to shop");
@@ -44,6 +52,7 @@ const ProductDetail = () => {
           <h1 className="text-3xl font-bold text-gray-800">{product.title}</h1>
           <p className="text-gray-600">{product.description}</p>
           <div className="text-green-600 text-2xl font-bold">${product.price}</div>
+          <div className="text-gray-600">Stock: {product.quantity}</div> {/* Display updated stock */}
 
           <div className="mt-4">
             <label className="block mb-2 text-gray-600 font-medium">Quantity</label>
@@ -52,7 +61,12 @@ const ProductDetail = () => {
               min="1"
               max="10"
               value={quantity}
-              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+              onChange={(e) => {
+                const value = Math.max(1, parseInt(e.target.value) || 1);
+                if (value <= product.stock) {
+                  setQuantity(value);
+                }
+              }}
               className="border rounded-lg px-4 py-2 w-20 text-center focus:outline-none focus:ring-2 focus:ring-blue-300"
             />
           </div>
