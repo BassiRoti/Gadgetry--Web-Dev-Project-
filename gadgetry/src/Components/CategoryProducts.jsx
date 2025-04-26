@@ -29,7 +29,7 @@ export default function CategoryProducts() {
                 />
                 <h3 className="text-lg font-semibold text-gray-800">{product.title}</h3>
                 <p className="text-green-600 font-bold text-xl">${product.price}</p>
-                <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.stock}</h3>
+                <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.quantity}</h3>
               </div>
             </Link>
           ))}

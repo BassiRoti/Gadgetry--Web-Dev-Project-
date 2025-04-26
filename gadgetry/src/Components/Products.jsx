@@ -14,13 +14,14 @@ const Products = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+  
 
   return (
     <>
-    <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+    {/* <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} /> */}
    <Navbar toggleSidebar={toggleSidebar} />
     {/* <Navbar/> */}
-    <Sidebar/>
+    <Sidebar/>  
     <Hero/>
     <Categories/>
     <FeaturedProducts/>

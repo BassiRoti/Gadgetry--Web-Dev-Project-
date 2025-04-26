@@ -4,6 +4,7 @@ import InnerAllProducts from './InnerAllProducts';
 import Footer from './Footer';
 
 const ProductsSection = () => {
+  
   return (
     <>
     <Navbar/>

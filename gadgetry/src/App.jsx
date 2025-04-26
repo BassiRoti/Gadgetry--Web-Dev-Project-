@@ -13,6 +13,7 @@ import CategoryProducts from './Components/CategoryProducts'
 // import Categories from './Components/Categories'
 import { loadStripe } from '@stripe/stripe-js';
   import { Elements } from '@stripe/react-stripe-js';
+  import ProtectedRoute from './Components/ProtectedRoute'
   // import CheckoutForm from './CheckoutForm';
   const stripePromise = loadStripe('123');
 function App() {
@@ -22,17 +23,26 @@ function App() {
     <>
           <BrowserRouter>
           <Routes>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/SignUp' element={<SignUp/>} />
+
+          <Route element={<ProtectedRoute adminOnly={true}/>} >
+          <Route path='/Admin' element={<Admin/>}></Route>
+          </Route>
+
+          <Route element={<ProtectedRoute adminOnly={false}/> }>
             <Route path='/' element={<Products/>} />
-            <Route path='/SignUp' element={<SignUp/>} />
             <Route path='/Products' element={<Products/>} />
             <Route path='/Products/ProductDetail/:id' element={<ProductDetail/>}/>
             <Route path='/cart' element={<Cart/>} />
-            {/* <Route path='/Checkout' element={<Checkout/>} /> */}
-            <Route path='/login' element={<Login/>}></Route>
-            <Route path='/Admin' element={<Admin/>}></Route>
             <Route path='/AllProducts' element={<AllProducts/>}></Route>
             <Route path='/Categories/:id' element={<CategoryProducts/>} />
+            </Route>
+            
+
             <Route path='/Checkout' element={<Elements stripe={stripePromise}><Checkout /></Elements>}
+
+            
         />
 
 

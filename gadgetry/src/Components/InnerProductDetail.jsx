@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { reduceStock } from '../Redux/ProductSlice';
 
 const ProductDetail = () => {
+  
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();

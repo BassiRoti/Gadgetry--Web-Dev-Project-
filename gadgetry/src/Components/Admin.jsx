@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../Redux/LoginSlice';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
   const loginState = useSelector((state) => state.login.login);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: '',
     price: '',
@@ -58,7 +63,7 @@ const AdminPanel = () => {
         isFeatured: false,
         quantity: 1,
       });
-      fetchMyProducts(); // Refresh after adding
+      fetchMyProducts();
     } catch (err) {
       console.error('Error adding product:', err);
       alert('Error adding product');
@@ -84,7 +89,12 @@ const AdminPanel = () => {
       console.error('Error updating stock:', err.response?.data || err.message);
       alert('Error updating stock');
     }
-};
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
 
   if (!loginState || loginState.role !== 'admin') {
     return (
@@ -96,9 +106,16 @@ const AdminPanel = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-10 text-blue-600 text-center">
-        Admin Dashboard
-      </h2>
+      {/* Top Bar */}
+      <div className="flex justify-between items-center mb-10">
+        <h2 className="text-3xl font-bold text-blue-600">Admin Dashboard</h2>
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded font-semibold"
+        >
+          Logout
+        </button>
+      </div>
 
       {/* Add Product Form */}
       <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded shadow mb-12">

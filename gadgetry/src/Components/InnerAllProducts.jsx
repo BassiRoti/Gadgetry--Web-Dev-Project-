@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 export default function InnerAllProducts() {
     const products=useSelector((state) => state.product.products);
+    
 
   return (
     <div>
@@ -24,7 +25,7 @@ export default function InnerAllProducts() {
                 className="rounded-lg w-full h-48 object-cover mb-4"
               />
               <h3 className="text-lg font-bold text-gray-800 mb-1">{product.title}</h3>
-              <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.stock}</h3>
+              <h3 className="text-lg font-bold text-gray-800 mb-1">Stock: {product.quantity}</h3>
               <p className="text-green-600 text-xl font-semibold">${product.price}</p>
               <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
                 View Details
