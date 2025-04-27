@@ -6,7 +6,6 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 py-12 mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
 
-        {/* About */}
         <div>
           <h3 className="text-xl font-bold text-white mb-4">Gadgetry</h3>
           <p className="text-gray-400">
@@ -14,7 +13,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
           <ul className="space-y-2">
@@ -24,7 +22,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Support */}
         <div>
           <h4 className="text-lg font-bold mb-4 text-white">Support</h4>
           <ul className="space-y-2">
@@ -34,7 +31,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Socials */}
         <div>
           <h4 className="text-lg font-bold mb-4 text-white">Follow Us</h4>
           <div className="flex space-x-4">
@@ -45,7 +41,7 @@ const Footer = () => {
 
       </div>
 
-      {/* Bottom */}
+
       <div className="text-center text-gray-500 text-sm mt-10">
         © 2025 Gadgetry. All rights reserved.
       </div>  

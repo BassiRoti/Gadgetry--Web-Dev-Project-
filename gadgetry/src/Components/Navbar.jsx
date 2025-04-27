@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {logout} from '../Redux/LoginSlice/index'
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
@@ -9,8 +11,22 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.product.products);
+  
   const loginstate = useSelector((state) => state.login.login);
+     const [products,setProducts]=useState([]);
+      useEffect(() => {
+        const fetchAllProducts = async () => {
+          try {
+            const res = await axios.get('http://localhost:3000/products');
+            setProducts(res.data);
+          } catch (err) {
+            console.error('Error fetching products:', err);
+            setProducts([]);  
+          }
+        };
+      
+        fetchAllProducts();
+      }, []);
 
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())

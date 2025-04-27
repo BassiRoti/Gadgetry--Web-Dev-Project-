@@ -1,27 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../Redux/ProductSlice';
+// import { setProducts } from '../Redux/ProductSlice';
 import axios from 'axios';
 
 const ProductsSection = () => {
-  const dispatch = useDispatch();
-
-  // Use Redux state to get products and fetched flag
-  const { products, fetched } = useSelector((state) => state.product);
-
+  const [products,setProducts]=useState([]);
+  // const [featuredProducts,setFeaturedProducts]=useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      if (!fetched) { // Only fetch if data hasn't been fetched yet
-        const response = await axios.get('http://localhost:3000/products');
-        dispatch(setProducts(response.data));
+      try {
+        const res = await axios.get('http://localhost:3000/products');
+        setProducts(res.data);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setProducts([]);
       }
     };
     fetchdata();
-  }, [dispatch, fetched]);
+  },[]);
 
-  // Filter featured products from Redux state
-  const featuredProducts = products.filter((product) => product.isFeatured === true);
+  const featuredProducts= products.filter((product) => product.isFeatured === true);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">

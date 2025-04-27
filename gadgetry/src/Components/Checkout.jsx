@@ -66,7 +66,6 @@ const CheckoutForm = () => {
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md mt-12 space-y-6">
       <h2 className="text-2xl font-bold text-gray-800 text-center">Checkout</h2>
 
-      {/* Shipping Form */}
       <div className="space-y-4">
         <input
           type="text"
@@ -106,7 +105,6 @@ const CheckoutForm = () => {
         />
       </div>
 
-      {/* Google Map */}
       <div>
         <label className="block text-gray-700 font-semibold mb-2 mt-6">Select Shipping Location</label>
         <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
@@ -121,7 +119,6 @@ const CheckoutForm = () => {
         </LoadScript>
       </div>
 
-      {/* Stripe Card */}
       <div>
         <label className="block text-gray-700 font-semibold mb-2 mt-6">Card Information</label>
         <div className="p-4 border border-gray-300 rounded-md bg-gray-50 shadow-inner">

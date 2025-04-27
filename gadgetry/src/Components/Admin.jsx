@@ -99,7 +99,7 @@ const AdminPanel = () => {
   if (!loginState || loginState.role !== 'admin') {
     return (
       <div className="text-center text-2xl text-red-600 mt-20">
-        Access Denied ❌. Only Admins Allowed.
+        Access Denied. Only Admins Allowed.
       </div>
     );
   }

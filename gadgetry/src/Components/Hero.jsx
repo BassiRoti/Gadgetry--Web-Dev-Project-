@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link, replace, Router } from 'react-router-dom';
-import AllProducts from '../Components/AllProducts'
-
 const Hero = () => {
   return (
     <section className="relative bg-gradient-to-r from-blue-600 to-blue-400 h-[500px] flex items-center justify-center text-white overflow-hidden">

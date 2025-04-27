@@ -2,12 +2,28 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function CategoryProducts() {
-  const { id } = useParams(); // 'id' is the category name
-  const allProducts = useSelector((state) => state.product.products);
-
-  const products = allProducts.filter((obj) => obj.category === id);
+  const { id } = useParams();
+   const [productss,setProductss]=useState([]);
+      useEffect(() => {
+        const fetchAllProducts = async () => {
+          try {
+            const res = await axios.get('http://localhost:3000/products');
+            setProductss(res.data);
+          } catch (err) {
+            console.error('Error fetching products:', err);
+            setProductss([]);  
+          }
+        };
+      
+        fetchAllProducts();
+      }, []);
+      
+  const products = productss.filter((obj) => obj.category === id);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">

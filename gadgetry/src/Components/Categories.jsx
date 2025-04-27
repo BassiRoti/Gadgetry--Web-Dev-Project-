@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Categories = () => {
-  const tempcategories=useSelector((state)=>state.product.products)
-  // console.log("tempcategories from Redux:", tempcategories);
+  const [tempcategories,settempcategories]=useState([]);
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        const res = await axios.get('http://localhost:3000/products');
+        settempcategories(res.data);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        settempcategories([]); 
+      }
+    };
+  
+    fetchAllProducts();
+  }, []);
 
   const categories = Array.from(
     new Map(tempcategories.map((category) => [category.category, category])).values()
   ).slice(0, 4);
-  // console.log(`temp categories `,categories);
-  
   
   // const categories=categoriestemp.filter
   return (

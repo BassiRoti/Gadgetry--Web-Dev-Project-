@@ -1,14 +1,23 @@
 import { Link } from 'react-router-dom';
-import { setProducts } from '../Redux/ProductSlice';
-// import axios from 'axios'
-import { useDispatch } from 'react-redux';
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-// import products from '../Data/Products'; 
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'; 
 
 export default function InnerAllProducts() {
-    const products=useSelector((state) => state.product.products);
+    // const products=useSelector((state) => state.product.products);
+    const [products,setProducts]=useState([]);
+    useEffect(() => {
+      const fetchAllProducts = async () => {
+        try {
+          const res = await axios.get('http://localhost:3000/products');
+          setProducts(res.data);
+        } catch (err) {
+          console.error('Error fetching products:', err);
+          setProducts([]);  
+        }
+      };
     
+      fetchAllProducts();
+    }, []);
 
   return (
     <div>
